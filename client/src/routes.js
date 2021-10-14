@@ -20,8 +20,8 @@ export default function Routes(){
         <BrowserRouter>
             <Switch>
                 {/* Rota Admin */}
-                <Route path="/admin/" exact component={Dasboard} />
-                <Route path="/login/" exact component={Login} />
+                <Route path="/" exact component={Login} />
+                <Route path="/admin" exact component={Dasboard} />
 
                 <Route path="/admin/agendamentos" exact component={Agendamentos}/>
                 <Route path="/admin/agendamentos/cadastrar" exact component={CadastrarAgendamentos}/>
