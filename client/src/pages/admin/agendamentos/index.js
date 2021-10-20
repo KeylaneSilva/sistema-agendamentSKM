@@ -1,5 +1,4 @@
-import * as React from 'react'; 
-
+import React, { useEffect, useState } from 'react'; 
 
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
@@ -8,6 +7,7 @@ import Paper from '@mui/material/Paper';
 
 import MenuAdmin from '../../../components/menu-admin'
 import Copyright from '../../../components/footer-admin';
+import api from '../../../services/api'
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -15,20 +15,24 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-  
-  const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ];
+
 
 export default function Agendamentos(){
+
+  const [agendamentos, setAgendamentos] = useState([]);
+
+  useEffect(() => {
+    async function loadAgendamentos(){
+      const response = await api.get('/api/agendamento');
+      //console.log(response.data);
+      setAgendamentos(response.data)
+    }
+    loadAgendamentos();
+  }, [])
+
     return (
         <>
           <MenuAdmin title={'AGENDAMENTOS'}/>  
@@ -48,26 +52,39 @@ export default function Agendamentos(){
                         <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
                             <TableHead>
                             <TableRow>
-                                <TableCell align="center">Nome da Cliente</TableCell>
-                                <TableCell align="right">Data do Agendamento</TableCell>
-                                <TableCell align="center">Horário</TableCell>
-                                <TableCell align="center">Procedimento</TableCell>
-                                <TableCell align="center">Valor</TableCell>
+                                <TableCell align="center"><strong>Nome da Cliente</strong></TableCell>
+                                <TableCell align="center"><strong>Data do Agendamento</strong></TableCell>
+                                <TableCell align="center"><strong>Horário</strong></TableCell>
+                                <TableCell align="center"><strong>Procedimento</strong></TableCell>
+                                <TableCell align="center"><strong>Valor</strong></TableCell>
+                                <TableCell align="center"><strong>Opções</strong></TableCell>
                             </TableRow>
                             </TableHead>
                             <TableBody>
-                            {rows.map((row) => (
+                            {agendamentos.map((row) => (
                                 <TableRow
-                                key={row.name}
+                                key={row._id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
-                                <TableCell component="th" scope="row">
-                                    {row.name}
-                                </TableCell>
-                                <TableCell align="right">{row.calories}</TableCell>
-                                <TableCell align="right">{row.fat}</TableCell>
-                                <TableCell align="right">{row.carbs}</TableCell>
-                                <TableCell align="right">{row.protein}</TableCell>
+                                <TableCell align="center">{row.nome_cliente}</TableCell>
+                                <TableCell align="center">{row.data_agedamento}</TableCell>
+                                <TableCell align="center">{row.horario_agendamento}</TableCell>
+                                <TableCell align="center">{row.nome_procedimento}</TableCell>
+                                <TableCell align="center">{row.valor}</TableCell>
+                                <TableCell align="right">
+                                  <ButtonGroup aria-label="outlined secondary button group">
+                                    <Button color="primary"
+                                  href={''}
+                                  >
+                                    Atualizar
+                                    </Button>
+                                  <Button 
+                                  color="secondary"                   
+                                  >
+                                    Excluir
+                                  </Button>
+                                </ButtonGroup>
+                            </TableCell>
                                 </TableRow>
                             ))}
                             </TableBody>
