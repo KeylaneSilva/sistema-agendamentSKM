@@ -27,7 +27,7 @@ export default function EditarAgendamentos(){
     useEffect(() => {
         async function getAgendamento(){
             var response = await api.get('/api/agendamento/details/' + idAgendamento);
-            // console.log(response)
+            console.log(response)
             setNomeCliente(response.data.nome_cliente)
             setData(response.data.data_agendamento)
             setHorario(response.data.horario_agendamento)
