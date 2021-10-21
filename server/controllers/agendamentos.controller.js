@@ -1,6 +1,5 @@
 const Agendamentos = require('../models/agendamento.model');
 
-
 module.exports = {
     async index(req ,res){
         const agend = await Agendamentos.find();
@@ -13,9 +12,9 @@ module.exports = {
         let agend = await Agendamentos.findOne({nome_cliente});
 
         if(!agend){
-           data = { nome_cliente, data_agendamento, horario_agendamento, nome_procedimento, valor, observacao_agendamento, foiAtendida}
+           data = { nome_cliente, data_agendamento, horario_agendamento, nome_procedimento, valor, observacao_agendamento, foiAtendida }
 
-           agend = await Agendamentos.create(data);
+           agend = await Agendamentos.create(data); 
 
            return res.status(200).json(agend);
         }else{
