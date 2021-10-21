@@ -72,7 +72,7 @@ export default function Agendamentos(){
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                 <TableCell align="center">{row.nome_cliente}</TableCell>
-                                <TableCell align="center">{row.data_agedamento}</TableCell>
+                                <TableCell align="center">{row.data_agendamento}</TableCell>
                                 <TableCell align="center">{row.horario_agendamento}</TableCell>
                                 <TableCell align="center">{row.nome_procedimento}</TableCell>
                                 <TableCell align="center">{row.valor}</TableCell>
