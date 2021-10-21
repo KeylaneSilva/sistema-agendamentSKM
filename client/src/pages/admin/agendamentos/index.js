@@ -18,8 +18,6 @@ import TableRow from '@mui/material/TableRow';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
-
-
 export default function Agendamentos(){
 
   const [agendamentos, setAgendamentos] = useState([]);
@@ -33,8 +31,15 @@ export default function Agendamentos(){
     loadAgendamentos();
   }, [])
 
+  async function handleDelete(id){
+    if(window.confirm('Deseja realmente excluir esse agendamento?')){
+      var result = await api.delete('/api/agendamento/delete/'+id)
+      window.location.href = '/admin/agendamentos'
+    }
+  }
+
     return (
-        <>
+      <>
           <MenuAdmin title={'AGENDAMENTOS'}/>  
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
@@ -74,12 +79,12 @@ export default function Agendamentos(){
                                 <TableCell align="right">
                                   <ButtonGroup aria-label="outlined secondary button group">
                                     <Button color="primary"
-                                  href={''}
+                                  href={'/admin/agendamentos/editar/' + row._id}
                                   >
                                     Atualizar
                                     </Button>
                                   <Button 
-                                  color="secondary"                   
+                                  color="secondary"      onClick={() => handleDelete(row._id)}             
                                   >
                                     Excluir
                                   </Button>
