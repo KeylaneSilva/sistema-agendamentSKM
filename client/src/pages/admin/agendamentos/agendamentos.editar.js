@@ -57,7 +57,7 @@ export default function EditarAgendamentos(){
         if(response.status == 200){
             window.location.href="/admin/agendamentos"
         }else{
-            alert('Erro ao cadastrar o produto!')
+            alert('Erro ao atualizar o agendamento!')
         }
     }
 
