@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const DataSchema = new mongoose.Schema({
     nome_cliente: String,
-    data_agendamento: String,
+    data_agendamento: {type:Date, default: Date.now() },
     horario_agendamento: String,
     nome_procedimento: String,
     valor: Number,

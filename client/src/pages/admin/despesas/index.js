@@ -45,7 +45,21 @@ export default function Despesas(){
           <MenuAdmin title={'DESPESAS'}/>  
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
+            <Grid container spacing={3}> 
+              <Grid item xs={0}>
+                <Paper sx={{
+                  p:2,
+                  marginTop: -45,
+                  boxShadow: 'none',
+                }}>
+                <Button 
+                  variant="contained" 
+                  color="success"
+                  href='\admin\despesas\cadastrar'>
+                  nova despesa
+                </Button>
+                </Paper>
+              </Grid>
               <Grid item xs={12}>
                 <Paper sx={{ 
                   p: 2, 
@@ -78,18 +92,20 @@ export default function Despesas(){
                                 <TableCell align="center">{row.data_despesa}</TableCell>
                                 <TableCell align="right">
                                   <ButtonGroup aria-label="outlined secondary button group">
-                                    <Button color="primary"
-                                  href={'/admin/agendamentos/editar/' + row._id}
-                                  >
+                                    <Button 
+                                      color="primary"
+                                      href={'/admin/despesas/editar/' + row._id}
+                                    >
                                     Atualizar
                                     </Button>
-                                  <Button 
-                                  color="secondary"      onClick={() => handleDelete(row._id)}             
-                                  >
+                                    <Button 
+                                      color="secondary"      
+                                      onClick={() => handleDelete(row._id)}             
+                                    >
                                     Excluir
-                                  </Button>
-                                </ButtonGroup>
-                            </TableCell>
+                                    </Button>
+                                  </ButtonGroup>
+                                </TableCell>
                                 </TableRow>
                             ))}
                             </TableBody>

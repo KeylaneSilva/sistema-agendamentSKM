@@ -84,6 +84,7 @@ export default function EditarAgendamentos(){
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
+                    type="date"
                     required
                     id="data_agendamento"
                     name="data"

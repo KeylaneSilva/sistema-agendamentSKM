@@ -44,6 +44,20 @@ export default function Agendamentos(){
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
+            <Grid item xs={0}>
+                <Paper sx={{
+                  p:2,
+                  marginTop: -45,
+                  boxShadow: 'none',
+                }}>
+                <Button 
+                  variant="contained" 
+                  color="success"
+                  href='\admin\despesas\cadastrar'>
+                  novo agendamento
+                </Button>
+                </Paper>
+              </Grid>
               <Grid item xs={12}>
                 <Paper sx={{ 
                   p: 2, 
@@ -62,6 +76,7 @@ export default function Agendamentos(){
                                 <TableCell align="center"><strong>Horário</strong></TableCell>
                                 <TableCell align="center"><strong>Procedimento</strong></TableCell>
                                 <TableCell align="center"><strong>Valor</strong></TableCell>
+                                <TableCell align="center"><strong>Pago</strong></TableCell>
                                 <TableCell align="center"><strong>Opções</strong></TableCell>
                             </TableRow>
                             </TableHead>
@@ -76,6 +91,7 @@ export default function Agendamentos(){
                                 <TableCell align="center">{row.horario_agendamento}</TableCell>
                                 <TableCell align="center">{row.nome_procedimento}</TableCell>
                                 <TableCell align="center">{row.valor}</TableCell>
+                                <TableCell align="center">{row.foiAtendida}</TableCell>
                                 <TableCell align="right">
                                   <ButtonGroup aria-label="outlined secondary button group">
                                     <Button color="primary"

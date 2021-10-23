@@ -12,7 +12,7 @@ module.exports = {
         let agend = await Agendamentos.findOne({nome_cliente});
 
         if(!agend){
-           data = { nome_cliente, data_agendamento, horario_agendamento, nome_procedimento, valor, observacao_agendamento, foiAtendida }
+           data = {nome_cliente, data_agendamento, horario_agendamento, nome_procedimento, valor, observacao_agendamento, foiAtendida}
 
            agend = await Agendamentos.create(data); 
 
@@ -20,7 +20,6 @@ module.exports = {
         }else{
             return res.status(500).json(agend);
         }
-
     },
 
     async details(req, res){

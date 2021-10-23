@@ -32,6 +32,7 @@ export default function CadastrarAgendamentos(){
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
+                    type="date"
                     required
                     id="data_agendamento"
                     name="data"
@@ -103,8 +104,7 @@ export default function CadastrarAgendamentos(){
                     color="primary">
                       Salvar
                     </Button>
-                  </Grid>
-               
+                  </Grid>      
             </Grid>
         </Container>
       </>

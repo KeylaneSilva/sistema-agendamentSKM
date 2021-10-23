@@ -54,6 +54,8 @@ export default function CadastrarDespesas(){
                     fullWidth
                     autoComplete="given-name"
                     variant="standard"
+                    value={nome_despesa}
+                    onChange={e => setDespesa(e.target.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={3}>
@@ -66,6 +68,8 @@ export default function CadastrarDespesas(){
                     fullWidth
                     autoComplete="family-name"
                     variant="standard"
+                    value={valor_despesa}
+                    onChange={e => setValor(e.target.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={9}>
@@ -76,6 +80,8 @@ export default function CadastrarDespesas(){
                     fullWidth
                     autoComplete="family-name"
                     variant="standard"
+                    value={obs_despesa}
+                    onChange={e => setObs(e.target.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={3}>
@@ -88,14 +94,23 @@ export default function CadastrarDespesas(){
                     fullWidth
                     autoComplete="shipping address-line1"
                     variant="standard"
+                    value={data_despesa}
+                    onChange={e => setDataDespesa(e.target.value)}
                     />
                 </Grid>
                 <Grid item sx={12} sm={12}>
                     <Button 
-                    variant="contained"
-                    onClick={handleSubmit}
-                    color="primary">
-                      Salvar
+                        variant="contained"
+                        onClick={handleSubmit}
+                        color="primary">
+                        Salvar
+                    </Button>
+                    <Button 
+                        variant="contained"
+                        color="primary"
+                        href='/admin/despesas'
+                        >
+                        Voltar
                     </Button>
                   </Grid>
                
