@@ -53,7 +53,7 @@ export default function Agendamentos(){
                 <Button 
                   variant="contained" 
                   color="success"
-                  href='\admin\despesas\cadastrar'>
+                  href='\admin\agendamentos\cadastrar'>
                   novo agendamento
                 </Button>
                 </Paper>

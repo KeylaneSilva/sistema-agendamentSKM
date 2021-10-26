@@ -8,7 +8,7 @@ const DataSchema = new mongoose.Schema({
     nome_procedimento: String,
     valor: Number,
     observacao_agendamento: String,
-    foiAtendida: Boolean
+    foiAtendida: {type: Boolean, default: 1}
 },{
     timestamps:true
 });
